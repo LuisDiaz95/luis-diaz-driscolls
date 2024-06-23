@@ -10,7 +10,7 @@ const users: User[] = [
 ];
 
 export const getUsers = async () => {
-  return users;
+  return [...users];
 };
 
 export const getUser = async (id: number) => {

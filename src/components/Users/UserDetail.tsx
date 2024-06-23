@@ -35,8 +35,8 @@ const UserDetail: React.FC = () => {
   return (
     <div>
       <h1>User Detail</h1>
-      <p>{user.name}</p>
-      <p>{user.email}</p>
+      <p>Name: {user.name}</p>
+      <p>Email: {user.email}</p>
       <button onClick={handleDelete}>Delete User</button>
       <Link to={`/edit-user/${user.id}`}>Edit User</Link>
     </div>
