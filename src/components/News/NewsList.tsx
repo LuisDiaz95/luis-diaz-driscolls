@@ -21,7 +21,6 @@ const NewsList: React.FC = () => {
   return (
     <div>
       <h1>News List</h1>
-      <Link to="/create-news">Create News</Link>
       <ul>
         {news.map((newsItem) => (
           <li key={newsItem.id}>
