@@ -2,6 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getNews, News } from "../../services/newsService";
 import { useTranslation } from "react-i18next";
+import {
+  Container,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 
 const NewsList: React.FC = () => {
   const [news, setNews] = useState<News[]>([]);
@@ -21,16 +28,23 @@ const NewsList: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <h1>{t("newsList")}</h1>
-      <ul>
+    <Container>
+      <Typography variant="h4" gutterBottom>
+        {t("newsList")}
+      </Typography>
+      <List>
         {news.map((newsItem) => (
-          <li key={newsItem.id}>
-            <Link to={`/news/${newsItem.id}`}>{newsItem.title}</Link>
-          </li>
+          <ListItem
+            key={newsItem.id}
+            component={Link}
+            to={`/news/${newsItem.id}`}
+            button
+          >
+            <ListItemText primary={newsItem.title} />
+          </ListItem>
         ))}
-      </ul>
-    </div>
+      </List>
+    </Container>
   );
 };
 

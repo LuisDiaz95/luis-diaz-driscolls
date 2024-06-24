@@ -7,6 +7,7 @@ import {
   User,
 } from "../../services/userService";
 import { useTranslation } from "react-i18next";
+import { Button, Container, TextField, Typography } from "@mui/material";
 
 const UserForm: React.FC = () => {
   const { id } = useParams<{ id?: string }>();
@@ -57,28 +58,39 @@ const UserForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>{id ? t("editUser") : t("createUser")}</h1>
-      <label>
-        {t("userName")}
-        <input
-          type="text"
+    <Container>
+      <Typography variant="h4" component="h1" gutterBottom>
+        {id ? t("editUser") : t("createUser")}
+      </Typography>
+      <form onSubmit={handleSubmit}>
+        <TextField
+          label={t("userName")}
           name="name"
           value={user.name}
           onChange={handleChange}
+          fullWidth
+          margin="normal"
+          variant="outlined"
         />
-      </label>
-      <label>
-        {t("userEmail")}
-        <input
-          type="email"
+        <TextField
+          label={t("userEmail")}
           name="email"
           value={user.email}
           onChange={handleChange}
+          fullWidth
+          margin="normal"
+          variant="outlined"
         />
-      </label>
-      <button type="submit">{id ? t("updateUser") : t("createUser")}</button>
-    </form>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          sx={{ marginTop: 2 }}
+        >
+          {id ? t("updateUser") : t("createUser")}
+        </Button>
+      </form>
+    </Container>
   );
 };
 

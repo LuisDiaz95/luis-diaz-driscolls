@@ -2,6 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getUsers, User } from "../../services/userService";
 import { useTranslation } from "react-i18next";
+import {
+  Button,
+  Container,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 
 const UserList: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -21,17 +29,32 @@ const UserList: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <h1>{t("userList")}</h1>
-      <Link to="/create-user">{t("createUser")}</Link>
-      <ul>
+    <Container>
+      <Typography variant="h4" component="h1" gutterBottom>
+        {t("userList")}
+      </Typography>
+      <Button
+        variant="contained"
+        color="primary"
+        component={Link}
+        to="/create-user"
+        sx={{ marginBottom: 2 }}
+      >
+        {t("createUser")}
+      </Button>
+      <List>
         {users.map((user) => (
-          <li key={user.id}>
-            <Link to={`/users/${user.id}`}>{user.name}</Link>
-          </li>
+          <ListItem
+            key={user.id}
+            component={Link}
+            to={`/users/${user.id}`}
+            button
+          >
+            <ListItemText primary={user.name} />
+          </ListItem>
         ))}
-      </ul>
-    </div>
+      </List>
+    </Container>
   );
 };
 

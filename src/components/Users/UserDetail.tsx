@@ -1,8 +1,8 @@
-// src/components/Users/UserDetail.tsx
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { getUser, deleteUser, User } from "../../services/userService";
 import { useTranslation } from "react-i18next";
+import { Button, Container, Typography } from "@mui/material";
 
 const UserDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -32,16 +32,36 @@ const UserDetail: React.FC = () => {
     }
   };
 
-  if (!user) return <div>{t("loading")}</div>;
+  if (!user) return <Typography>{t("loading")}</Typography>;
 
   return (
-    <div>
-      <h1>{t("userDetail")}</h1>
-      <p>{t("userName")}: {user.name}</p>
-      <p>{t("userEmail")}: {user.email}</p>
-      <button onClick={handleDelete}>{t("deleteUser")}</button>
-      <Link to={`/edit-user/${user.id}`}>{t("editUser")}</Link>
-    </div>
+    <Container>
+      <Typography variant="h4" component="h1" gutterBottom>
+        {t("userDetail")}
+      </Typography>
+      <Typography variant="body1">
+        {t("userName")}: {user.name}
+      </Typography>
+      <Typography variant="body1">
+        {t("userEmail")}: {user.email}
+      </Typography>
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={handleDelete}
+        sx={{ marginRight: 2 }}
+      >
+        {t("deleteUser")}
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        component={Link}
+        to={`/edit-user/${user.id}`}
+      >
+        {t("editUser")}
+      </Button>
+    </Container>
   );
 };
 

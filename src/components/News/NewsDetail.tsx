@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleNews, News } from "../../services/newsService";
 import { useTranslation } from "react-i18next";
+import { Typography, Card } from "@mui/material";
 
 const NewsDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -25,8 +26,10 @@ const NewsDetail: React.FC = () => {
 
   return (
     <div>
-      <h1>{news.title}</h1>
-      <p>{news.content}</p>
+      <Card elevation={3} sx={{ padding: "20px" }}>
+        <Typography variant="h4">{news.title}</Typography>
+        <Typography variant="body1">{news.content}</Typography>
+      </Card>
     </div>
   );
 };
