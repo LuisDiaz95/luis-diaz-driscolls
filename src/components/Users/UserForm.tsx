@@ -6,11 +6,13 @@ import {
   updateUser,
   User,
 } from "../../services/userService";
+import { useTranslation } from "react-i18next";
 
 const UserForm: React.FC = () => {
   const { id } = useParams<{ id?: string }>();
   const [user, setUser] = useState<User>({ id: 0, name: "", email: "" });
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (id) {
@@ -46,7 +48,9 @@ const UserForm: React.FC = () => {
       navigate("/users");
     } catch (error) {
       console.error(
-        `There was an error ${id ? "updating" : "creating"} the user!`,
+        `There was an error ${id ? t("updating") : t("creating")} ${t(
+          "theUser"
+        )}!`,
         error
       );
     }
@@ -54,9 +58,9 @@ const UserForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>{id ? "Edit User" : "Create User"}</h1>
+      <h1>{id ? t("editUser") : t("createUser")}</h1>
       <label>
-        Name
+        {t("userName")}
         <input
           type="text"
           name="name"
@@ -65,7 +69,7 @@ const UserForm: React.FC = () => {
         />
       </label>
       <label>
-        Email
+        {t("userEmail")}
         <input
           type="email"
           name="email"
@@ -73,7 +77,7 @@ const UserForm: React.FC = () => {
           onChange={handleChange}
         />
       </label>
-      <button type="submit">{id ? "Update User" : "Create User"}</button>
+      <button type="submit">{id ? t("updateUser") : t("createUser")}</button>
     </form>
   );
 };

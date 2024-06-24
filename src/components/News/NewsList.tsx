@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getNews, News } from "../../services/newsService";
+import { useTranslation } from "react-i18next";
 
 const NewsList: React.FC = () => {
   const [news, setNews] = useState<News[]>([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -11,7 +13,7 @@ const NewsList: React.FC = () => {
         const newsData = await getNews();
         setNews(newsData);
       } catch (error) {
-        console.error("There was an error fetching the users!", error);
+        console.error("There was an error fetching the news!", error);
       }
     };
 
@@ -20,7 +22,7 @@ const NewsList: React.FC = () => {
 
   return (
     <div>
-      <h1>News List</h1>
+      <h1>{t("newsList")}</h1>
       <ul>
         {news.map((newsItem) => (
           <li key={newsItem.id}>

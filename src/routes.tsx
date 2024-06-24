@@ -8,7 +8,7 @@ import NewsDetail from "./components/News/NewsDetail";
 const AppRoutes = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/users" Component={UserList} />
+      <Route path="/users" element={<UserList />} />
       <Route path="/users/:id" element={<UserDetail />} />
       <Route path="/create-user" element={<UserForm />} />
       <Route path="/edit-user/:id" element={<UserForm />} />

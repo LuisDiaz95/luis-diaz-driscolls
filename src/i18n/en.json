@@ -1,0 +1,18 @@
+{
+  "welcome": "Welcome",
+  "userList": "User List",
+  "userName": "Name",
+  "userEmail": "Email",
+  "userDetail": "User Detail",
+  "createUser": "Create User",
+  "editUser": "Edit User",
+  "saveUser": "Save User",
+  "deleteUser": "Delete User",
+  "newsList": "News List",
+  "newsDetail": "News Detail",
+  "loading": "Loading...",
+  "updateUser": "Update User",
+  "theUser": "the user",
+  "creating": "creating",
+  "updating": "updating"
+}

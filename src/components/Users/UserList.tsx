@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getUsers, User } from "../../services/userService";
+import { useTranslation } from "react-i18next";
 
 const UserList: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -20,8 +22,8 @@ const UserList: React.FC = () => {
 
   return (
     <div>
-      <h1>User List</h1>
-      <Link to="/create-user">Create User</Link>
+      <h1>{t("userList")}</h1>
+      <Link to="/create-user">{t("createUser")}</Link>
       <ul>
         {users.map((user) => (
           <li key={user.id}>

@@ -1,0 +1,18 @@
+{
+  "welcome": "Bienvenido",
+  "userList": "Lista de Usuarios",
+  "userName": "Nombre",
+  "userEmail": "Correo Electrónico",
+  "userDetail": "Detalle del Usuario",
+  "createUser": "Crear Usuario",
+  "editUser": "Editar Usuario",
+  "saveUser": "Guardar Usuario",
+  "deleteUser": "Eliminar Usuario",
+  "newsList": "Lista de Noticias",
+  "newsDetail": "Detalle de la Noticia",
+  "loading": "Cargando...",
+  "updateUser": "Actualizar Usuario",
+  "theUser": "el usuario",
+  "creating": "creando",
+  "updating": "actualizando"
+}

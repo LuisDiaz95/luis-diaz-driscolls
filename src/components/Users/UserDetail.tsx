@@ -2,11 +2,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { getUser, deleteUser, User } from "../../services/userService";
+import { useTranslation } from "react-i18next";
 
 const UserDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -30,15 +32,15 @@ const UserDetail: React.FC = () => {
     }
   };
 
-  if (!user) return <div>Loading...</div>;
+  if (!user) return <div>{t("loading")}</div>;
 
   return (
     <div>
-      <h1>User Detail</h1>
-      <p>Name: {user.name}</p>
-      <p>Email: {user.email}</p>
-      <button onClick={handleDelete}>Delete User</button>
-      <Link to={`/edit-user/${user.id}`}>Edit User</Link>
+      <h1>{t("userDetail")}</h1>
+      <p>{t("userName")}: {user.name}</p>
+      <p>{t("userEmail")}: {user.email}</p>
+      <button onClick={handleDelete}>{t("deleteUser")}</button>
+      <Link to={`/edit-user/${user.id}`}>{t("editUser")}</Link>
     </div>
   );
 };
