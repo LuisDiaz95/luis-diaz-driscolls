@@ -10,10 +10,6 @@ const lngs = {
 const Navbar: React.FC = () => {
   const { t, i18n } = useTranslation();
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
-
   return (
     <nav>
       <ul>
