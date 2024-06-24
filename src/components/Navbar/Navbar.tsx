@@ -2,6 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+const lngs = {
+  en: { nativeName: "English" },
+  es: { nativeName: "Español" },
+};
+
 const Navbar: React.FC = () => {
   const { t, i18n } = useTranslation();
 
@@ -19,10 +24,16 @@ const Navbar: React.FC = () => {
           <Link to="/news">{t("newsList")}</Link>
         </li>
       </ul>
-      <div>
-        <button onClick={() => changeLanguage("en")}>EN</button>
-        <button onClick={() => changeLanguage("es")}>ES</button>
-      </div>
+      {Object.keys(lngs).map((lng) => (
+        <button
+          type="submit"
+          key={lng}
+          onClick={() => i18n.changeLanguage(lng)}
+          disabled={i18n.resolvedLanguage === lng}
+        >
+          {lng}
+        </button>
+      ))}
     </nav>
   );
 };
