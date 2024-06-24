@@ -4,9 +4,11 @@ import UserDetail from "./components/Users/UserDetail";
 import UserForm from "./components/Users/UserForm";
 import NewsList from "./components/News/NewsList";
 import NewsDetail from "./components/News/NewsDetail";
+import Navbar from "./components/Navbar/Navbar";
 
 const AppRoutes = () => (
   <BrowserRouter>
+    <Navbar />
     <Routes>
       <Route path="/users" element={<UserList />} />
       <Route path="/users/:id" element={<UserDetail />} />
